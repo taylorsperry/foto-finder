@@ -3,24 +3,33 @@
   <head>
     <title>Foto Finder</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,800" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <header>
-      <h1>Foto Finder</h1>
-      <span class="search-bar">
-        <input type="search" placeholder="Search"><button></button>
-      </span>
+    <header class="space-between">
+      <div id="logo">
+        <h1>Foto</h1>
+        <img src="assets/foto-finder-logo.svg" alt="Foto Finder Logo" class="icon">
+        <h1>Finder</h1>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search" id="search-input" class="no-focus"><button id="search-btn" class="no-focus"></button>
+      </div>
     </header>
-    <form action="">
-      <label for="title">Title</label>
-      <input type="text" id="title">
-      <label for="caption">Caption</label>
-      <textarea type="text" id="caption"></textarea>
-      <button>Choose File</button>
-      <button>View Favorites</button>
-      <button>Add to Album</button>
-    </form>
+    <section class="form-container">
+      <form>
+        <label for="title" class="form-label">Title</label>
+        <input type="text" id="title" class="form-input no-focus">
+        <label for="caption" class="form-label">Caption</label>
+        <textarea type="text" id="caption" class="form-input no-focus"></textarea>
+        <button class="form-btns no-focus">Choose File</button>
+        <span class="space-between">
+          <button class="form-btns spaced-btns no-focus">View Favorites</button>
+          <button class="form-btns spaced-btns no-focus">Add to Album</button>
+        </span>
+      </form>
+    </section>
     <section>Album</section>
     <script src="main.js"></script>
     <script src="photo.js"></script>
