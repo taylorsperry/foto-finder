@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  font-family: Open Sans;
+  margin: 0;
+}
+
+/* General */
+
+body {
+  /*background-image: url(assets/fotofinder-comp.png);*/
+  /*background-repeat: no-repeat;
+  background-size: 100%; */
+  color: #C2B2B4;
+  background-color: #3E2A35;
+}
+
+input,
+textarea,
+#search-input::placeholder {
+  padding-left: 10px;
+  color: #C2B2B4;
+  font-size: 1rem;
+}
+
+textarea {
+  padding-top: 10px;
+}
+
+.no-focus:focus {
+  outline: none;
+}
+
+/* Header Starts Here */
+
+header {
+  padding: 2.5rem 3.5rem 2.5rem 3.5rem;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+#logo,
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.icon {
+  height: 2.5rem;
+  padding: 0 .5rem 0 .5rem;
+}
+
+#search-input {
+  height: 50px;
+  width: 360px;
+  border-radius: 5px 0 0 5px;
+  border: solid #C2B2B4 2px;
+}
+
+#search-btn {
+  height: 50px;
+  width: 50px;
+  border-radius: 0 5px 5px 0;
+  background-color: #C2B2B4;
+  border: none;
+}
+
+/* Form Starts Here */
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  padding: 1.25rem 0 1.25rem 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.form-input,
+.form-btns {
+  height: 60px;
+  border-radius: 2px;
+  border: none;
+}
+
+.form-input {
+  margin-bottom: 1.25rem;
+}
+
+.form-label,
+.form-btns {
+  font-size: 1.2rem;
+}
+
+.form-label {
+  padding: 0 0 .75rem .5rem;
+}
+
+.form-btns {
+  background-color: #5B4447;
+  color: #fff;
+  margin: 2rem 0 1.25rem 0;
+}
+
+.form-btns:hover {
+  background-color: #938284;
+}
+
+.spaced-btns {
+  width: 43%;
+}
+
+/* Media Queries */
+
+/*@media only screen and (max-width:1000px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}*/
+
