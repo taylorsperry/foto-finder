@@ -34,9 +34,6 @@ textarea {
 
 header {
   padding: 2.5rem 3.5rem 2.5rem 3.5rem;
-}
-
-.space-between {
   display: flex;
   justify-content: space-between;
 }
@@ -85,7 +82,8 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
-  width: 48%;
+  /*width: 48%;*/
+  width: 450px;
 }
 
 .form-input,
@@ -118,17 +116,64 @@ form {
   background-color: #938284;
 }
 
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .spaced-btns {
   width: 43%;
 }
 
 /* Media Queries */
 
-/*@media only screen and (max-width:1000px) {
+@media only screen and (max-width:1000px) {
   header {
-    display: flex;
+    padding: 2.5rem 0 2.5rem 0;
     flex-direction: column;
     justify-content: center;
   }
-}*/
+
+  #logo,
+  .search-bar {
+    display: flex;
+    justify-content: center;
+  }
+
+  #logo {
+    padding-bottom: 1rem;
+  }
+  #search-input {
+    width: 400px;
+  }
+
+  .form-input {
+    width: 450px;
+  }
+}
+
+@media only screen and (max-width:1000px) {
+  header {
+    padding: 2.5rem 0 2.5rem 0;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #logo,
+  .search-bar {
+    display: flex;
+    justify-content: center;
+  }
+
+  #logo {
+    padding-bottom: 1rem;
+  }
+  #search-input {
+    width: 400px;
+  }
+
+  .form-input {
+    width: 450px;
+  }
+}
 
