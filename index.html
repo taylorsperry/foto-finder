@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <header class="space-between">
+    <header>
       <div id="logo">
         <h1>Foto</h1>
         <img src="assets/foto-finder-logo.svg" alt="Foto Finder Logo" class="icon">
@@ -26,12 +26,19 @@
         <button class="form-btns no-focus">Choose File</button>
         <span class="space-between">
           <button class="form-btns spaced-btns no-focus">View Favorites</button>
-          <button class="form-btns spaced-btns no-focus">Add to Album</button>
+          <button class="form-btns spaced-btns no-focus" id="add-btn">Add to Album</button>
         </span>
       </form>
     </section>
-    <section>Album</section>
-    <script src="main.js"></script>
+    <section>
+      <article class="card">
+        <div class="card-title">Title</div>
+        <div class="image">Image</div>
+        <div class="caption">Caption</div>
+        <div class="card-buttons">Buttons</div>
+      </article>
+    </section>
     <script src="photo.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
