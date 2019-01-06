@@ -7,8 +7,8 @@
 /* General */
 
 body {
-  /*background-image: url(assets/fotofinder-comp.png);*/
-  /*background-repeat: no-repeat;
+  /*background-image: url(assets/fotofinder-comp.png);
+  background-repeat: no-repeat;
   background-size: 100%; */
   color: #C2B2B4;
   background-color: #3E2A35;
@@ -51,7 +51,7 @@ h1 {
   color: #fff;
 }
 
-.icon {
+.logo-icon {
   height: 2.5rem;
   padding: 0 .5rem 0 .5rem;
 }
@@ -83,7 +83,7 @@ form {
   display: flex;
   flex-direction: column;
   /*width: 48%;*/
-  width: 450px;
+  width: 700px;
 }
 
 .form-input,
@@ -140,7 +140,57 @@ form {
   width: 43%;
 }
 
-/* Media Queries */
+/* Photo Gallery Starts Here */
+
+.photo-gallery {
+  padding: 3rem 5rem 3rem 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #C2B2B4;
+}
+
+.card {
+  padding: 0 1rem 0 1rem;
+  margin-bottom: 2rem;
+  width: 320px;
+  height: 400px;
+  display: grid;
+  grid-template-rows: 50px auto auto 50px;
+}
+
+h2, 
+.caption-output {
+  padding-left: 1rem;
+  background-color: #fff;
+  color: #5B4447;
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+}
+
+.caption-output {
+  padding-top: 1rem;
+  font-weight: bold;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card-icons {
+  background-color: #5B4447;
+  padding: .5rem 0 .5rem 0;
+}
+
+.card-icon {
+  height: 2rem;
+  width: 50%;
+}
+
+
+/* Media Queries Start Here */
 
 @media only screen and (max-width:1000px) {
   header {
