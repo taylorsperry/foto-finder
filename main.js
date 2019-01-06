@@ -5,21 +5,20 @@ var imagesArr = JSON.parse(localStorage.getItem("photos")) || [];
 var reader = new FileReader();
 var title = document.querySelector("#title");
 var caption = document.querySelector("#caption");
+var favorite = document.querySelector("#favorite");
 
 
 window.addEventListener('load', appendPhotos);
 create.addEventListener('click', addToAlbum);
 
 function appendPhotos() {
-  console.log("input clicked")
   imagesArr.forEach(function (photo) {
-    photoGallery.innerHTML += `img src=${photo.file} />`
+    populateCard(photo.id, photo.title, photo.file, photo.caption, photo.favorite);
   })
 }
 
 function addToAlbum(event) {
   event.preventDefault();
-  // console.log(title.value, caption.value);
   if (input.files[0]) {
     reader.readAsDataURL(input.files[0]);
     reader.onload = addPhoto;
@@ -27,15 +26,20 @@ function addToAlbum(event) {
 }
 
 function addPhoto(event) {
-  var newPhoto = new Photo(Date.now(), event.target.result);
+  var newPhoto = new Photo(Date.now(), title.value, caption.value, event.target.result, favorite);
+  populateCard(newPhoto.id, newPhoto.title, newPhoto.file, newPhoto.caption, newPhoto.favorite);
+  imagesArr.push(newPhoto);
+  newPhoto.saveToStorage(imagesArr);
+}
+
+function populateCard(populateId, populateTitle, populatePhoto, populateCaption, populateFavorite) {
   photoGallery.innerHTML += 
-    `<article class="card">
-      <h2 class="title-output" contenteditable="true">${title.value}</h2>
-      <img src=${event.target.result} /> 
-      <p class="caption-output" contenteditable="true">${caption.value}</p>
+    `<article class="card" data-id=${populateId}>
+      <h2 class="title-output" contenteditable="true">${populateTitle}</h2>
+      <img src=${populatePhoto} / class="card-image"> 
+      <p class="caption-output" contenteditable="true">${populateCaption}</p>
       <div class="space-between card-icons"
-        <img src="assets/delete.svg" alt="delete" class="card-icon">
-        <img src="assets/favorite.svg" alt="favorite" class="card-icon">
+        <p id="favorite">${populateFavorite}</p>
       </div>
     </article`;
 }
