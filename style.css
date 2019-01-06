@@ -116,6 +116,21 @@ form {
   background-color: #938284;
 }
 
+.input-file + label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-file {
+  width: .1px;
+  height: .1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
 .space-between {
   display: flex;
   justify-content: space-between;
