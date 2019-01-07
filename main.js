@@ -1,4 +1,4 @@
-var create = document.querySelector("#add-btn")
+var add = document.querySelector("#add-btn")
 var input = document.querySelector("#input-btn")
 var photoGallery = document.querySelector('.photo-gallery');
 var imagesArr = JSON.parse(localStorage.getItem("photos")) || [];
@@ -6,10 +6,11 @@ var reader = new FileReader();
 var title = document.querySelector("#title");
 var caption = document.querySelector("#caption");
 var favorite = document.querySelector("#favorite");
-
+// var deleteBtn = document.getElementById("delete");
 
 window.addEventListener('load', appendPhotos);
-create.addEventListener('click', addToAlbum);
+add.addEventListener('click', addToAlbum);
+// deleteBtn.addEventListener("click", deleteCard);
 
 function appendPhotos() {
   imagesArr.forEach(function (photo) {
@@ -30,6 +31,8 @@ function addPhoto(event) {
   populateCard(newPhoto.id, newPhoto.title, newPhoto.file, newPhoto.caption, newPhoto.favorite);
   imagesArr.push(newPhoto);
   newPhoto.saveToStorage(imagesArr);
+  title.value = "";
+  caption.value = "";
 }
 
 function populateCard(populateId, populateTitle, populatePhoto, populateCaption, populateFavorite) {
@@ -39,7 +42,14 @@ function populateCard(populateId, populateTitle, populatePhoto, populateCaption,
       <img src=${populatePhoto} / class="card-image"> 
       <p class="caption-output" contenteditable="true">${populateCaption}</p>
       <div class="space-between card-icons"
-        <p id="favorite">${populateFavorite}</p>
+        <input type="image" src="assets/favorite.svg" alt="favorite" class="spaced-btns">
+        <input type="image" src="assets/delete.svg" alt="delete" class="spaced-btns">
       </div>
     </article`;
 }
+
+// function deleteCard() {
+//   console.log("hi");
+//   var uniqueId = event.target.closest(data.id);
+//   console.log(uniqueId);
+// }
