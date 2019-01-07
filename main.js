@@ -6,11 +6,10 @@ var reader = new FileReader();
 var title = document.querySelector("#title");
 var caption = document.querySelector("#caption");
 var favorite = document.querySelector("#favorite");
-// var deleteBtn = document.getElementById("delete");
 
 window.addEventListener('load', appendPhotos);
 add.addEventListener('click', addToAlbum);
-// deleteBtn.addEventListener("click", deleteCard);
+photoGallery.addEventListener("click", manipulateCard);
 
 function appendPhotos() {
   imagesArr.forEach(function (photo) {
@@ -38,18 +37,50 @@ function addPhoto(event) {
 function populateCard(populateId, populateTitle, populatePhoto, populateCaption, populateFavorite) {
   photoGallery.innerHTML += 
     `<article class="card" data-id=${populateId}>
-      <h2 class="title-output" contenteditable="true">${populateTitle}</h2>
+      <h2 class="title-output edit" contenteditable="true">${populateTitle}</h2>
       <img src=${populatePhoto} / class="card-image"> 
-      <p class="caption-output" contenteditable="true">${populateCaption}</p>
-      <div class="space-between card-icons"
-        <input type="image" src="assets/favorite.svg" alt="favorite" class="spaced-btns">
-        <input type="image" src="assets/delete.svg" alt="delete" class="spaced-btns">
+      <p class="caption-output edit" contenteditable="true">${populateCaption}</p>
+      <div class="card-icons">
+        <input type="image" src="assets/delete.svg" alt="delete" class="card-icon delete">
+        <input type="image" src="assets/favorite.svg" alt="favorite" class="card-icon favorite">
       </div>
     </article`;
 }
 
-// function deleteCard() {
-//   console.log("hi");
-//   var uniqueId = event.target.closest(data.id);
-//   console.log(uniqueId);
-// }
+function manipulateCard(event) {
+  if (event.target.classList.contains("edit")) {
+    editCard(event);
+  }
+  if (event.target.classList.contains("delete")) {
+    // console.log(event.target.classList)
+    deleteCard();
+  }
+  if (event.target.classList.contains("favorite")) {
+    favoriteCard(event);
+  }
+}
+
+function editCard(event) {
+  console.log("editCard fired")
+}
+
+function deleteCard() {
+  // console.log("deleteCard fired");
+  var selectedCard = event.target.closest('article');
+  // console.log(selectedCard);
+  var selectedID = parseInt(selectedCard.dataset.id);
+  // console.log(selectedID);
+  var index = imagesArr.findIndex(function(photo) {
+    return photo.id === selectedID;
+  });
+  // console.log(index);
+  // console.log(imagesArr[index]);
+  imagesArr[index].deleteFromStorage();
+  // imagesArr.splice(index, 1);
+  // selectedCard.remove();
+}
+
+function favoriteCard(event) {
+  console.log("favoriteCard fired");
+  //updatePhoto will give this.favorite a value of "true"
+  }
