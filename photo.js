@@ -12,10 +12,15 @@ class Photo {
   }
 
   deleteFromStorage(index) {
+    console.log("hello");
     imagesArr.splice(index, 1);
     this.saveToStorage(imagesArr);
    }
 
-  updatePhoto() {}
-
+  updatePhoto() {
+    if (event.target.classList.contains("favorite")) {
+      this.favorite = !this.favorite;
+      this.saveToStorage(imagesArr);
+    }
+  }
 }
