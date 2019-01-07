@@ -56,8 +56,8 @@ h1 {
   padding: 0 .5rem 0 .5rem;
 }
 
-.search-icon {
-  color: #fff;
+#search-icon {
+  height: 10px;
 }
 
 #search-input {
