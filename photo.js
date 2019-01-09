@@ -16,10 +16,18 @@ class Photo {
     this.saveToStorage(imagesArr);
    }
 
-  updatePhoto() {
+  updatePhoto(category, text) {
     if (event.target.classList.contains("favorite")) {
       this.favorite = !this.favorite;
       this.saveToStorage(imagesArr);
     }
+    if (category && text) {
+      this[category] = text;
+    }
+    this.saveToStorage(imagesArr)
+    console.log(category);
+    console.log(text);
   }
 }
+
+   

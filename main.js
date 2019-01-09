@@ -6,10 +6,12 @@ var reader = new FileReader();
 var title = document.querySelector("#title");
 var caption = document.querySelector("#caption");
 var favorite = document.querySelector("#favorite");
+var titleOutput = document.querySelector(".title-output");
 
 window.addEventListener('load', appendPhotos(imagesArr));
 add.addEventListener('click', addToAlbum);
 photoGallery.addEventListener("click", manipulateCard);
+photoGallery.addEventListener("keydown", enterCheck);
 
 function appendPhotos(array) {
   imagesArr = [];
@@ -40,9 +42,9 @@ function addPhoto(event) {
 function populateCard(card) {
   photoGallery.innerHTML += 
     `<article class="card" data-id=${card.id}>
-      <h2 class="title-output edit" contenteditable="true">${card.title}</h2>
+      <h2 class="title-output" contenteditable="true">${card.title}</h2>
       <img src="${card.file}" class="card-image"> 
-      <p class="caption-output edit" contenteditable="true">${card.caption}</p>
+      <p class="caption-output" contenteditable="true">${card.caption}</p>
       <div class="card-icons">
         <img src="assets/delete.svg" alt="delete" class="card-icon delete">
         <img src=${card.favorite ? "assets/favorite-active.svg" : "assets/favorite.svg"} alt="favorite" class="card-icon favorite">
@@ -51,9 +53,9 @@ function populateCard(card) {
 }
 
 function manipulateCard(event) {
-  if (event.target.classList.contains("edit")) {
-    editCard(event);
-  }
+  // if (event.target.classList.contains("edit")) {
+  //   editCard(event);
+  // }
   if (event.target.classList.contains("delete")) {
     deleteCard();
   }
@@ -62,12 +64,40 @@ function manipulateCard(event) {
   }
 }
 
-function editCard(event) {
-  console.log("editCard fired")
+// function editCard(event) {
+//   console.log("editCard fired")
+// }
+
+function enterCheck(event) {
+  if(event.keyCode === 13) {
+    captureContent(event);
+  }
+}
+
+function captureContent(event) {
+  event.preventDefault();
+  var selectedCard = event.target.closest("article");
+  var selectedID = parseInt(selectedCard.dataset.id);
+  var index = imagesArr.findIndex(function(photo) {
+    return photo.id === selectedID;
+  });
+  var targetClass = event.target.className;
+  var targetText = event.target.innerText;
+  changeContent(index, targetClass, targetText);
+}
+
+function changeContent(index, targetClass, targetText) {
+  console.log(index, targetClass, targetText);
+  if (targetClass === "title-output") {
+    imagesArr[index].updatePhoto("title", targetText);
+  }
+  if(targetClass === "caption-output") {
+    imagesArr[index].updatePhoto("caption", targetText)
+  }
 }
 
 function deleteCard() {
-  var selectedCard = event.target.closest('article');
+  var selectedCard = event.target.closest("article");
   var selectedID = parseInt(selectedCard.dataset.id);
   var index = imagesArr.findIndex(function(photo) {
     return photo.id === selectedID;
