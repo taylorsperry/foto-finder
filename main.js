@@ -6,12 +6,14 @@ var reader = new FileReader();
 var title = document.querySelector("#title");
 var caption = document.querySelector("#caption");
 var favorite = document.querySelector("#favorite");
-var titleOutput = document.querySelector(".title-output");
+var searchInput = document.querySelector("#search-input");
+// var titleOutput = document.querySelector(".title-output");
 
 window.addEventListener('load', appendPhotos(imagesArr));
 add.addEventListener('click', addToAlbum);
 photoGallery.addEventListener("click", manipulateCard);
 photoGallery.addEventListener("keydown", enterCheck);
+searchInput.addEventListener("input", search);
 
 function appendPhotos(array) {
   imagesArr = [];
@@ -52,10 +54,19 @@ function populateCard(card) {
     </article`;
 }
 
+function search() {
+  photoGallery.innerHTML = ""; 
+  var searchText = searchInput.value;
+  var foundCards = imagesArr.filter(function(photo) {
+    return photo.title.includes(searchText) || photo.caption.includes(searchText);
+  });
+  foundCards.forEach(function (photo) {
+    var newPhoto = new Photo(photo.id, photo.title, photo.caption, photo.file, photo.favorite);
+    populateCard(newPhoto);
+  });
+}
+
 function manipulateCard(event) {
-  // if (event.target.classList.contains("edit")) {
-  //   editCard(event);
-  // }
   if (event.target.classList.contains("delete")) {
     deleteCard();
   }
@@ -63,10 +74,6 @@ function manipulateCard(event) {
     favoriteCard(event);
   }
 }
-
-// function editCard(event) {
-//   console.log("editCard fired")
-// }
 
 function enterCheck(event) {
   if(event.keyCode === 13) {
