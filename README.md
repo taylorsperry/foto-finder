@@ -13,8 +13,12 @@ It was designed as a way for us to demonstrate our command of specific javascrip
 FotoFider allows a user to create a "photo" with a title and caption, click the heart icon to save a targeted photo as a "favorite", click the trash icon to delete a targeted photo, update photos after they've been added, filter photos by their "favorite" status, and search for photos in the search bar. Photos (as well as any changes to that photo) are saved to local storage and persist on the DOM on pageload. Deleted items are removed from both the DOM and local storage. 
 
 ## Screenshots
-#### Provided Full-Size Comp (Desktop version)
+#### Provided Comp
+<img width="536" alt="foto-finder-comp" src="https://user-images.githubusercontent.com/43555476/50906831-31789200-13e3-11e9-91d1-77d200dbe3d5.png">
 
+### My Build
+<img width="1439" alt="foto-finder-top" src="https://user-images.githubusercontent.com/43555476/50906759-0c841f00-13e3-11e9-9993-553418cd238d.png">
+<img width="1440" alt="foto-finder-bottom" src="https://user-images.githubusercontent.com/43555476/50906763-0e4de280-13e3-11e9-8aef-f7b6d5599661.png">
 
 ## Tech/framework used
 <b>Built with</b>
