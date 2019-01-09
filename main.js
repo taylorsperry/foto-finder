@@ -15,7 +15,7 @@ photoGallery.addEventListener("click", manipulateCard);
 photoGallery.addEventListener("keydown", enterCheck);
 photoGallery.addEventListener("focusout", captureContent)
 searchInput.addEventListener("input", search);
-favoriteBtn.addEventListener("click", viewFavorites)
+favoriteBtn.addEventListener("click", viewFavorites);
 
 function appendPhotos(array) {
   imagesArr = [];
@@ -50,8 +50,8 @@ function populateCard(card) {
       <img src="${card.file}" class="card-image"> 
       <p class="caption-output" contenteditable="true">${card.caption}</p>
       <div class="card-icons">
-        <img src="assets/delete.svg" alt="delete" class="card-icon delete">
-        <img src=${card.favorite ? "assets/favorite-active.svg" : "assets/favorite.svg"} alt="favorite" class="card-icon favorite">
+        <img src="assets/delete.svg" alt="delete" class="delete">
+        <img src=${card.favorite ? "assets/favorite-active.svg" : "assets/favorite.svg"} alt="favorite" class="favorite">
       </div>
     </article`;
 }
@@ -108,7 +108,6 @@ function captureContent(event) {
 }
 
 function changeContent(index, targetClass, targetText) {
-  console.log(index, targetClass, targetText);
   if (targetClass === "title-output") {
     imagesArr[index].updatePhoto("title", targetText);
   }

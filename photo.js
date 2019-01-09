@@ -21,12 +21,14 @@ class Photo {
       this.favorite = !this.favorite;
       this.saveToStorage(imagesArr);
     }
-    if (category && text) {
-      this[category] = text;
+    if (category === "title") {
+      this.title = text;
+    }
+
+    if (category === "caption") {
+      this.caption = text;
     }
     this.saveToStorage(imagesArr)
-    console.log(category);
-    console.log(text);
   }
 }
 
