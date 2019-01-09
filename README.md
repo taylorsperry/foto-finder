@@ -1,4 +1,5 @@
-## IdeaBox Triples
+## Foto Finder
+
 This project was a final solo project for Mod 1 at Turing. Solidify and demonstrate your use of:
 semantic HTML
 clean & organized CSS styles
