@@ -7,19 +7,15 @@
 /* General */
 
 body {
-  /*background-image: url(assets/fotofinder-comp.png);
-  background-repeat: no-repeat;
-  background-size: 100%; */
-  color: #C2B2B4;
   background-color: #3E2A35;
+  color: #C2B2B4;
 }
 
 input,
-textarea,
-#search-input::placeholder {
-  padding-left: 10px;
-  color: #C2B2B4;
+textarea {
+  color: #5B4447;
   font-size: 1rem;
+  padding-left: 10px;
 }
 
 textarea {
@@ -33,22 +29,22 @@ textarea {
 /* Header Starts Here */
 
 header {
-  padding: 2.5rem 3.5rem 2.5rem 3.5rem;
   display: flex;
   justify-content: space-between;
+  padding: 2.5rem 3.5rem 2.5rem 3.5rem;
 }
 
 #logo,
 .search-bar {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 h1 {
-  text-transform: uppercase;
+  color: #fff;
   font-size: 3.5rem;
   letter-spacing: 2px;
-  color: #fff;
+  text-transform: uppercase;
 }
 
 .logo-icon {
@@ -57,22 +53,23 @@ h1 {
 }
 
 #search-icon {
-  height: 10px;
+  height: 25px;
+  padding: 3px 5px 0 0;
 }
 
 #search-input {
+  border-radius: 5px 0 0 5px;
+  border: solid #C2B2B4 3px;
   height: 50px;
   width: 360px;
-  border-radius: 5px 0 0 5px;
-  border: solid #C2B2B4 2px;
 }
 
 #search-btn {
+  background-color: #C2B2B4;
+  border-radius: 0 5px 5px 0;
+  border: none;
   height: 50px;
   width: 50px;
-  border-radius: 0 5px 5px 0;
-  background-color: #C2B2B4;
-  border: none;
 }
 
 /* Form Starts Here */
@@ -80,21 +77,20 @@ h1 {
 .form-container {
   display: flex;
   justify-content: center;
-  padding: 1.25rem 0 1.25rem 0;
+  padding: 1.25rem 0 1.75rem 0;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  /*width: 48%;*/
   width: 700px;
 }
 
 .form-input,
 .form-btns {
-  height: 60px;
   border-radius: 2px;
   border: none;
+  height: 60px;
 }
 
 .form-input {
@@ -121,17 +117,17 @@ form {
 }
 
 .input-file + label {
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .input-file {
-  width: .1px;
   height: .1px;
   opacity: 0;
   overflow: hidden;
   position: absolute;
+  width: .1px;
   z-index: -1;
 }
 
@@ -147,67 +143,61 @@ form {
 /* Photo Gallery Starts Here */
 
 .photo-gallery {
-  padding: 3rem 5rem 3rem 5rem;
-  display: flex;
-  flex-wrap: wrap;
   background-color: #C2B2B4;
+  display: grid;
+  grid-row-gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  padding: 3rem 2rem 3rem 2rem;
 }
 
 .card {
-  padding: 0 1rem 0 1rem;
-  margin-bottom: 2rem;
-  width: 320px;
-  height: 400px;
+  border: solid #5B4447 2px;
   display: grid;
-  grid-template-rows: 50px 190px 110px 50px;
+  grid-template-rows: 50px 160px 110px 50px;
+  height: auto;
+  margin: auto;
+  width: 280px;
 }
 
 h2, 
 .caption-output {
-  padding-left: 1rem;
   background-color: #fff;
   color: #5B4447;
+  padding-left: 1rem;
 }
 
 h2 {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 .caption-output {
-  padding-top: 1rem;
   font-weight: bold;
+  padding-top: 1rem;
 }
 
 .card img {
   width: 100%;
-  object-fit: cover;
 }
 
 .card-icons {
+  align-items: center;
   background-color: #5B4447;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: .5rem;
+  padding: 0 1rem 0 1rem;
 }
 
 .card-icons img {
-  height: 20px; 
-  width: 20px;
+  height: 30px; 
+  width: 30px;
 }
-
-.card-icon {
-  height: 10px;
-  width: 10px;
-}
-
 
 /* Media Queries Start Here */
 
 @media only screen and (max-width:1000px) {
   header {
-    padding: 2.5rem 0 2.5rem 0;
     flex-direction: column;
     justify-content: center;
   }
@@ -218,40 +208,39 @@ h2 {
     justify-content: center;
   }
 
-  #logo {
-    padding-bottom: 1rem;
-  }
   #search-input {
-    width: 400px;
-  }
-
-  .form-input {
-    width: 450px;
-  }
-}
-
-@media only screen and (max-width:1000px) {
-  header {
-    padding: 2.5rem 0 2.5rem 0;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  #logo,
-  .search-bar {
-    display: flex;
-    justify-content: center;
+    height: 50px;
+    width: 650px;
   }
 
   #logo {
+    margin: auto;
+  }
+
+  h1 {
+    font-size: 5rem;
     padding-bottom: 1rem;
   }
-  #search-input {
-    width: 400px;
+
+  .logo-icon { 
+    height: 4.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .form {
+    width: 770px;
   }
 
   .form-input {
-    width: 450px;
+    width: 100%;
   }
 }
+
+@media only screen and (max-width:500px) {
+  .photo-gallery {
+    background-color: yellow;
+    grid-auto-rows: ;
+  }
+ } 
+
 

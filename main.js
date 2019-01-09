@@ -7,13 +7,15 @@ var title = document.querySelector("#title");
 var caption = document.querySelector("#caption");
 var favorite = document.querySelector("#favorite");
 var searchInput = document.querySelector("#search-input");
-// var titleOutput = document.querySelector(".title-output");
+var favoriteBtn = document.querySelector("#fav-btn");
 
 window.addEventListener('load', appendPhotos(imagesArr));
 add.addEventListener('click', addToAlbum);
 photoGallery.addEventListener("click", manipulateCard);
 photoGallery.addEventListener("keydown", enterCheck);
+photoGallery.addEventListener("focusout", captureContent)
 searchInput.addEventListener("input", search);
+favoriteBtn.addEventListener("click", viewFavorites);
 
 function appendPhotos(array) {
   imagesArr = [];
@@ -48,19 +50,31 @@ function populateCard(card) {
       <img src="${card.file}" class="card-image"> 
       <p class="caption-output" contenteditable="true">${card.caption}</p>
       <div class="card-icons">
-        <img src="assets/delete.svg" alt="delete" class="card-icon delete">
-        <img src=${card.favorite ? "assets/favorite-active.svg" : "assets/favorite.svg"} alt="favorite" class="card-icon favorite">
+        <img src="assets/delete.svg" alt="delete" class="delete">
+        <img src=${card.favorite ? "assets/favorite-active.svg" : "assets/favorite.svg"} alt="favorite" class="favorite">
       </div>
     </article`;
+}
+
+function viewFavorites(event) {
+  event.preventDefault();
+  photoGallery.innerHTML = "";
+  favArray = imagesArr.filter(function(photo) {
+    return photo.favorite == true;
+  })
+  favArray.forEach(function (photo) {
+    var newPhoto = new Photo(photo.id, photo.title, photo.caption, photo.file, photo.favorite);
+    populateCard(newPhoto);
+  });  
 }
 
 function search() {
   photoGallery.innerHTML = ""; 
   var searchText = searchInput.value;
-  var foundCards = imagesArr.filter(function(photo) {
+  var searchArray = imagesArr.filter(function(photo) {
     return photo.title.includes(searchText) || photo.caption.includes(searchText);
   });
-  foundCards.forEach(function (photo) {
+  searchArray.forEach(function (photo) {
     var newPhoto = new Photo(photo.id, photo.title, photo.caption, photo.file, photo.favorite);
     populateCard(newPhoto);
   });
@@ -94,7 +108,6 @@ function captureContent(event) {
 }
 
 function changeContent(index, targetClass, targetText) {
-  console.log(index, targetClass, targetText);
   if (targetClass === "title-output") {
     imagesArr[index].updatePhoto("title", targetText);
   }
