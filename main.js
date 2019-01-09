@@ -7,13 +7,15 @@ var title = document.querySelector("#title");
 var caption = document.querySelector("#caption");
 var favorite = document.querySelector("#favorite");
 var searchInput = document.querySelector("#search-input");
-// var titleOutput = document.querySelector(".title-output");
+var favoriteBtn = document.querySelector("#fav-btn");
 
 window.addEventListener('load', appendPhotos(imagesArr));
 add.addEventListener('click', addToAlbum);
 photoGallery.addEventListener("click", manipulateCard);
 photoGallery.addEventListener("keydown", enterCheck);
+photoGallery.addEventListener("focusout", captureContent)
 searchInput.addEventListener("input", search);
+favoriteBtn.addEventListener("click", viewFavorites)
 
 function appendPhotos(array) {
   imagesArr = [];
@@ -54,13 +56,25 @@ function populateCard(card) {
     </article`;
 }
 
+function viewFavorites(event) {
+  event.preventDefault();
+  photoGallery.innerHTML = "";
+  favArray = imagesArr.filter(function(photo) {
+    return photo.favorite == true;
+  })
+  favArray.forEach(function (photo) {
+    var newPhoto = new Photo(photo.id, photo.title, photo.caption, photo.file, photo.favorite);
+    populateCard(newPhoto);
+  });  
+}
+
 function search() {
   photoGallery.innerHTML = ""; 
   var searchText = searchInput.value;
-  var foundCards = imagesArr.filter(function(photo) {
+  var searchArray = imagesArr.filter(function(photo) {
     return photo.title.includes(searchText) || photo.caption.includes(searchText);
   });
-  foundCards.forEach(function (photo) {
+  searchArray.forEach(function (photo) {
     var newPhoto = new Photo(photo.id, photo.title, photo.caption, photo.file, photo.favorite);
     populateCard(newPhoto);
   });
