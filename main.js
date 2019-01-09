@@ -1,3 +1,5 @@
+// Global Variables
+
 var add = document.querySelector("#add-btn")
 var input = document.querySelector("#input-btn")
 var photoGallery = document.querySelector('.photo-gallery');
@@ -9,6 +11,9 @@ var favorite = document.querySelector("#favorite");
 var searchInput = document.querySelector("#search-input");
 var favoriteBtn = document.querySelector("#fav-btn");
 
+
+// Event Listeners
+
 window.addEventListener('load', appendPhotos(imagesArr));
 add.addEventListener('click', addToAlbum);
 photoGallery.addEventListener("click", manipulateCard);
@@ -16,6 +21,8 @@ photoGallery.addEventListener("keydown", enterCheck);
 photoGallery.addEventListener("focusout", captureContent)
 searchInput.addEventListener("input", search);
 favoriteBtn.addEventListener("click", viewFavorites);
+
+// Add Card Functions
 
 function appendPhotos(array) {
   imagesArr = [];
@@ -56,29 +63,7 @@ function populateCard(card) {
     </article`;
 }
 
-function viewFavorites(event) {
-  event.preventDefault();
-  photoGallery.innerHTML = "";
-  favArray = imagesArr.filter(function(photo) {
-    return photo.favorite == true;
-  })
-  favArray.forEach(function (photo) {
-    var newPhoto = new Photo(photo.id, photo.title, photo.caption, photo.file, photo.favorite);
-    populateCard(newPhoto);
-  });  
-}
-
-function search() {
-  photoGallery.innerHTML = ""; 
-  var searchText = searchInput.value;
-  var searchArray = imagesArr.filter(function(photo) {
-    return photo.title.includes(searchText) || photo.caption.includes(searchText);
-  });
-  searchArray.forEach(function (photo) {
-    var newPhoto = new Photo(photo.id, photo.title, photo.caption, photo.file, photo.favorite);
-    populateCard(newPhoto);
-  });
-}
+// Manipulate Card Functions
 
 function manipulateCard(event) {
   if (event.target.classList.contains("delete")) {
@@ -139,4 +124,30 @@ function favoriteCard(event) {
   }
   foundCard.updatePhoto();
   foundCard.saveToStorage(imagesArr);
+}
+
+// View Favorites and Search Results Functions
+
+function viewFavorites(event) {
+  event.preventDefault();
+  photoGallery.innerHTML = "";
+  favArray = imagesArr.filter(function(photo) {
+    return photo.favorite == true;
+  })
+  favArray.forEach(function (photo) {
+    var newPhoto = new Photo(photo.id, photo.title, photo.caption, photo.file, photo.favorite);
+    populateCard(newPhoto);
+  });  
+}
+
+function search() {
+  photoGallery.innerHTML = ""; 
+  var searchText = searchInput.value;
+  var searchArray = imagesArr.filter(function(photo) {
+    return photo.title.includes(searchText) || photo.caption.includes(searchText);
+  });
+  searchArray.forEach(function (photo) {
+    var newPhoto = new Photo(photo.id, photo.title, photo.caption, photo.file, photo.favorite);
+    populateCard(newPhoto);
+  });
 }
