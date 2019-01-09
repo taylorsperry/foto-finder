@@ -12,7 +12,6 @@ class Photo {
   }
 
   deleteFromStorage(index) {
-    console.log("hello");
     imagesArr.splice(index, 1);
     this.saveToStorage(imagesArr);
    }

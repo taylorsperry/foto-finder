@@ -44,8 +44,8 @@ function populateCard(card) {
       <img src="${card.file}" class="card-image"> 
       <p class="caption-output edit" contenteditable="true">${card.caption}</p>
       <div class="card-icons">
-        <input type="image" src="assets/delete.svg" alt="delete" class="card-icon delete">
-        <input type="image" src="assets/favorite.svg" alt="favorite" class="card-icon favorite">
+        <img src="assets/delete.svg" alt="delete" class="card-icon delete">
+        <img src=${card.favorite ? "assets/favorite-active.svg" : "assets/favorite.svg"} alt="favorite" class="card-icon favorite">
       </div>
     </article`;
 }
@@ -67,24 +67,26 @@ function editCard(event) {
 }
 
 function deleteCard() {
-  console.log("deleteCard fired");
   var selectedCard = event.target.closest('article');
   var selectedID = parseInt(selectedCard.dataset.id);
   var index = imagesArr.findIndex(function(photo) {
     return photo.id === selectedID;
   });
-  imagesArr[index].deleteFromStorage();
+  imagesArr[index].deleteFromStorage(index);
   selectedCard.remove();
 }
 
 function favoriteCard(event) {
-  console.log("favoriteCard fired");
   var selectedCard = event.target.closest('article');
   var selectedID = parseInt(selectedCard.dataset.id);
   var foundCard = imagesArr.find(function(photo) {
     return photo.id === selectedID;
   })
+  if(foundCard.favorite === true) {
+    event.target.src = "assets/favorite.svg";
+  } else { 
+    event.target.src = "assets/favorite-active.svg";
+  }
   foundCard.updatePhoto();
-  console.log(foundCard.favorite.)
-  // foundCard.favorite.innerText === "fire";
+  foundCard.saveToStorage(imagesArr);
 }
