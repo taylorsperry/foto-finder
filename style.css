@@ -236,11 +236,20 @@ h2 {
   }
 }
 
-@media only screen and (max-width:500px) {
-  .photo-gallery {
-    background-color: yellow;
-    grid-auto-rows: ;
+@media only screen and (max-width:660px) {
+  .card {
+    border: solid #5B4447 2px;
+    display: grid;
+    grid-template-rows: 100px 320px 220px 100px;
+    height: auto;
+    margin: auto;
+    width: 100%;
   }
- } 
+
+  .card-icons img {
+  height: 60px; 
+  width: 60px;
+  }
+} 
 
 
